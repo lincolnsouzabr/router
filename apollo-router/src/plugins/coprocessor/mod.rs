@@ -69,6 +69,7 @@ mod supergraph;
 pub(crate) const EXTERNAL_SPAN_NAME: &str = "external_plugin";
 const POOL_IDLE_TIMEOUT_DURATION: Option<Duration> = Some(Duration::from_secs(5));
 const COPROCESSOR_ERROR_EXTENSION: &str = "ERROR";
+const COPROCESSOR_CALL_ERROR_EXTENSION: &str = "EXTERNAL_CALL_ERROR";
 const COPROCESSOR_DESERIALIZATION_ERROR_EXTENSION: &str = "EXTERNAL_DESERIALIZATION_ERROR";
 
 type MapFn = fn(http::Response<hyper::body::Incoming>) -> http::Response<RouterBody>;
@@ -816,7 +817,7 @@ where
                 .errors(vec![
                     Error::builder()
                         .message(format!("external coprocessor call failed: {error}"))
-                        .extension_code(COPROCESSOR_DESERIALIZATION_ERROR_EXTENSION)
+                        .extension_code(COPROCESSOR_CALL_ERROR_EXTENSION)
                         .build(),
                 ])
                 .build();
@@ -1011,7 +1012,7 @@ where
                 .errors(vec![
                     Error::builder()
                         .message(format!("external coprocessor call failed: {error}"))
-                        .extension_code(COPROCESSOR_DESERIALIZATION_ERROR_EXTENSION)
+                        .extension_code(COPROCESSOR_CALL_ERROR_EXTENSION)
                         .build(),
                 ])
                 .build();
@@ -1217,7 +1218,7 @@ where
                 .errors(vec![
                     Error::builder()
                         .message(format!("external coprocessor call failed: {error}"))
-                        .extension_code(COPROCESSOR_DESERIALIZATION_ERROR_EXTENSION)
+                        .extension_code(COPROCESSOR_CALL_ERROR_EXTENSION)
                         .build(),
                 ])
                 .build();
@@ -1398,7 +1399,7 @@ where
                 .errors(vec![
                     Error::builder()
                         .message(format!("external coprocessor call failed: {error}"))
-                        .extension_code(COPROCESSOR_DESERIALIZATION_ERROR_EXTENSION)
+                        .extension_code(COPROCESSOR_CALL_ERROR_EXTENSION)
                         .build(),
                 ])
                 .build();

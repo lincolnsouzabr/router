@@ -241,7 +241,7 @@ where
                 .errors(vec![
                     Error::builder()
                         .message(format!("external coprocessor call failed: {error}"))
-                        .extension_code(super::COPROCESSOR_DESERIALIZATION_ERROR_EXTENSION)
+                        .extension_code(super::COPROCESSOR_CALL_ERROR_EXTENSION)
                         .build(),
                 ])
                 .build();
@@ -413,7 +413,7 @@ where
                 .errors(vec![
                     Error::builder()
                         .message(format!("external coprocessor call failed: {error}"))
-                        .extension_code(super::COPROCESSOR_DESERIALIZATION_ERROR_EXTENSION)
+                        .extension_code(super::COPROCESSOR_CALL_ERROR_EXTENSION)
                         .build(),
                 ])
                 .build();
